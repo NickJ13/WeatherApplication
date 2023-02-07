@@ -19,12 +19,12 @@
     <h1>Weather Dashboard</h1>
 
     <form>
-      <label for="city-search">Enter a city:</label>
-      <input type="text" id="city-search" name="city-search" />
+      <label for="search-city">Enter a city:</label>
+      <input type="text" id="search-city" name="city-search" />
       <input type="submit" value="Search" />
     </form>
     <h2>Current Weather Conditions</h2>
-    <div id="current-weather">
+    <div id="weather-section">
       <p>City: <span id="city-name"></span></p>
       <p>Date: <span id="date"></span></p>
       <p>
@@ -37,16 +37,16 @@
     </div>
 
     <h2>5-Day Forecast</h2>
-    <div id="forecast">
-      <div class="forecast-day">
+    <div id="weather-forecast">
+      <div class="day-forecast">
         <p>Date: <span class="forecast-date"></span></p>
         <p>
           Weather:
           <img class="forecast-weather-icon" src="" alt="Weather icon">
         </p>
-        <p>Temperature: <span class="forecast-temperature"></span></p>
-        <p>Wind Speed: <span class="forecast-wind-speed"></span></p>
-        <p>Humidity: <span class="forecast-humidity"></span></p>
+        <p>Temperature: <span class="temperature"></span></p>
+        <p>Wind Speed: <span class="wind-speed"></span></p>
+        <p>Humidity: <span class="humidity"></span></p>
       </div>
     </div>
 
