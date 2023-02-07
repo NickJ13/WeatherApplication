@@ -14,7 +14,7 @@ form.addEventListener('submit', event => {
 var city = cityInput.value;
 
 // Fetch the weather data from the API
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=814f38345e9ad4aba13f50f7224ec9bc`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=814f38345e9ad4aba13f50f7224ec9bc&units=imperial`)
     .then(response => response.json())
     .then(data => {
       var date = new Date(data.dt * 1000);
@@ -25,35 +25,38 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=814f38345
       document.querySelector('#city-name').innerText = data.name;
       dateElement.innerText = dateString;
       weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-      document.querySelector('#temperature').innerText = data.main.temp;
+      document.querySelector('#temperature').innerText = data.main.temp + '°f';
       document.querySelector('#humidity').innerText = data.main.humidity;
       document.querySelector('#wind-speed').innerText = data.wind.speed;
       getForecast(city);
     });
 
-    // Get 5-day forecast data for the city
+    // create function for 5-day forecast
   var apiKey = '814f38345e9ad4aba13f50f7224ec9bc';
-//   var units = 'metric';
 
   function getForecast(city) {
     forecast.innerHTML = '';
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
-        // Loop through the forecast data and update the page
+        // create a loop to get the forecast for the next 5 days
         data.list.filter((forecastData, index, arr) => {
           return new Date(forecastData.dt_txt).toDateString() !== new Date(arr[index - 1]?.dt_txt).toDateString();
         }).forEach(forecastData => {
       
-            // Get the date and time of the forecast
+            //  Get date and time of forecast
             var dateTime = forecastData.dt_txt;
-            // Get the temperature and weather condition
-            var temperature = forecastData.main.temp + 'Â°C';
+            //  get temp
+            var temperature = forecastData.main.temp + '°f';
+            //get conditions
             var condition = forecastData.weather[0].main;
+            //get humdity
             var humidity = forecastData.main.humidity + '%';
+            //get windspeed
             var windSpeed = forecastData.wind.speed + ' m/s';
+            
             var forecastDay = document.createElement('div');
-            forecastDay.classList.add('forecast-day');
+            forecastDay.classList.add('day-forecast');
             forecastDay.innerHTML = `
                 <p>Date: ${dateTime}</p>
                 <img src="https://openweathermap.org/img/wn/${forecastData.weather[0].icon}@2x.png" alt="Weather Icon">
