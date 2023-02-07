@@ -57,3 +57,14 @@ body {
     margin-bottom: 10px;
     border: 1px solid gray;
   }
+  
+  #search-history button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    padding: 2px;
+    height: 20px;
+    width: 20px;
+  }
