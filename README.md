@@ -23,6 +23,8 @@ N/A
 type a US city name into ther search bar and press the search button, and the website will retrieve a 5-day forecast of the city you typed in. It will also show your search history at the bottom of the screen.
 
 ## Credits
+mekael:https://github.com/mekael18
+Tom:https://github.com/ogwalrus
 
 youtube.com
 
